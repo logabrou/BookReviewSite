@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Twitter Feed</title>
+<link th:replace="fragments/fragments :: head">
+</head>
+<body>
+	<div class="container-fluid">
+		<div  th:replace="fragments/fragments :: navbar"></div>
+		<ul class="nav nav-tabs">
+			<li role="presentation"
+				th:classappend="${filter == 'all' ? 'active' : '' }"><a
+				href="/tweets">All</a></li>
+				<li>/</li>
+			<li role="presentation"
+				th:classappend="${filter == 'following' ? 'active' : '' }"><a
+				href="/tweets?filter=following"> Following</a></li>
+		</ul>
+		<br />
+		<h2>Book Posts</h2>
+		<div class="list-group" th:each="book:${bookList}">
+			<div class="list-group-item list-group-item-action">
+				<div class="d-flex w-100 justify-content-between">
+					<h5>
+						<a style="color: #1da1f2;" class="username"
+							th:href="@{/users/} + ${blurb.user.username}"> @<span
+							th:text="${blurb.user.username}"></span>
+						</a>
+					</h5>
+					<small th:text="${blurb.date}"></small>
+				</div>
+				<p th:utext="${blurb.message}"></p>
+			</div>
+		</div>
+		<div th:if="${#lists.isEmpty(bookList)}">
+			<h3>No tweets have been created yet</h3>
+		</div>
+	</div>
+	<div th:if="${#lists.isEmpty(bookList) and filter == 'all'}">
+		<h3>No tweets have been created yet</h3>
+	</div>
+	<div th:if="${#lists.isEmpty(bookList) and filter == 'following'}">
+		<h3>No tweets have been created by your followers</h3>
+	</div>
+	<script th:replace="fragments/fragments :: footer"></script>
+</body>
+</html>
