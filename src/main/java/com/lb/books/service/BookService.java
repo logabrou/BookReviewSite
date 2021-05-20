@@ -39,7 +39,7 @@ public class BookService {
 	    }
 
 //	    find all book lists for the given list of users
-	    public List<Book> findAllByUsers(List<User> users) {
+	    public List<Book> findAllByUser(List<User> users) {
 	    	List<Book> books = bookRepo.findAllByUserInOrderByTitleDesc(users);
 	        return books;
 	    }

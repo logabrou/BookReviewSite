@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lb.books.model.Book;
 import com.lb.books.model.BookBlurb;
+import com.lb.books.model.BookRequest;
 import com.lb.books.repository.BookBlurbRepository;
 import com.lb.books.repository.BookRepository;
 import com.lb.books.service.*;
@@ -50,6 +51,17 @@ public class BookController {
 	    	List<Book> books = new ArrayList<>();
 	    	books = bookRepo.findAllByUserOrderByTitleDesc(loggedInUser);
 	        model.addAttribute("bookList", books);
+	        return "feed";
+	    }
+	
+	 
+	 
+	    @PostMapping("/")
+	    public String postIndex(BookRequest bookrequest, Model model) {
+	        Book data = bookService.getBookInfo(bookrequest.getTitle());
+//	        List<Book> books = bookRepo.findAllByOrderByTitleDesc();
+	        model.addAttribute("data", data);
+//	        model.addAttribute("books", books);
 	        return "feed";
 	    }
 	 

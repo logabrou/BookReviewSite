@@ -4,11 +4,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Users</title>
-<link th:replace="fragments/head">
+<link th:replace="fragments/fragments :: head">
 </head>
 <body>
 	<div class="container-fluid">
-		<div th:replace="fragments/navbar"></div>
+		<div th:replace="fragments/fragments :: navbar"></div>
 		<ul class="nav nav-tabs">
 			<li role="presentation"
 				th:classappend="${filter == 'all' ? 'active' : '' }"><a
@@ -62,6 +62,6 @@
 	<div th:if="${#lists.isEmpty(users) and filter == 'following'}">
 		<h3>You're not following anyone</h3>
 	</div>
-	<script th:replace="fragments/scripts"></script>
+	<script th:replace="fragments/fragments :: footer"></script>
 </body>
 </html>

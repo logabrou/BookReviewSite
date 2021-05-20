@@ -59,7 +59,7 @@ public class UserController {
 	      }
 	    }
 //	    I need to determine the difference in bookBlurbDisplay and how it functions
-	    boolean isSelfPage = loggedInUser.getUserName().equals(username);
+	    boolean isSelfPage = loggedInUser.getUsername().equals(username);
 	    model.addAttribute("isSelfPage", isSelfPage);
 	    model.addAttribute("isSimilar", isSimilar);
 	    model.addAttribute("isDifferent", isDifferent);
@@ -104,7 +104,7 @@ public class UserController {
 	    HashMap<String, Integer> bookBlurbCounts = new HashMap<>();
 	    for (User user : users) {
 	      List<BookBlurbDisplay> bookBlurbs = bookBlurbService.findAllByUser(user);
-	      bookBlurbCounts.put(user.getUserName(), bookBlurbs.size());
+	      bookBlurbCounts.put(user.getUsername(), bookBlurbs.size());
 	    }
 	    model.addAttribute("bookBlurbCounts", bookBlurbCounts);
 	  }
@@ -115,7 +115,7 @@ public class UserController {
 	    HashMap<String, Integer> bookCounts = new HashMap<>();
 	    for (User user : users) {
 	      List<Book> books = bookService.findAllByUser(user);
-	      bookCounts.put(user.getUserName(), books.size());
+	      bookCounts.put(user.getUsername(), books.size());
 	    }
 	    model.addAttribute("bookCounts", bookCounts);
 	  }

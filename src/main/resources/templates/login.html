@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
   <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head th:replace="fragments/fragments :: head">
   <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
@@ -19,8 +19,8 @@
                   <input type="password" id="password"  name="password" class="form-control" placeholder="Password">
               </p>
               <div style="display: flex; justify-content: space-between">
-                  <button class="btn btn-lg btn-primary" name="submit" value="in" type="submit" style="flex-grow: 0.95">Sign In</button>
-                  <a><button class="btn btn-lg btn-primary" th:href="@{/signup}"></button></a>
+                  <button class="btn btn-lg btn-primary" name="submit" value="in" type="submit" style="flex-grow: 2">Sign In</button>
+                  <button class="btn btn-lg btn-success" name="submit" value="up" type="submit" style="flex-grow: 1">Sign Up</button>
               </div>
           </form>
       </div>
@@ -28,4 +28,39 @@
  
   <div th:replace="fragments/fragments :: footer"></div>
  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <head th:replace="fragments/fragments :: head">
+ <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+ </head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Login</title>
+
+<body>
+	<div class="container-fluid">
+		<div th:replace="fragments/fragments :: navbar"></div>
+		<h2>Welcome!</h2>
+		<form th:action="@{/login}" method="post">
+			<br /> <input type="text" id="username" name="username"
+				th:placeholder="Username" class="form-control" /><br /> <input
+				type="password" th:placeholder="Password" id="password"
+				name="password" class="form-control" /> <br />
+			<div align="center" th:if="${param.error}">
+				<h4 style="color: red;">Login unsuccessful.</h4>
+				<span class="text-success" th:utext="${username}"></span>
+			</div>
+			<button class="btn btn-md btn-success btn-block" name="Submit"
+				value="Login" type="Submit">Log in</button>
+		</form> 	
+		
+		
+	</div>
+	<script th:replace="fragments/fragments :: footer"></script>
+</body>
 </html>
+
+
+
+

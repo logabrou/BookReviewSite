@@ -78,5 +78,5 @@ public class Book {
 	  @JoinColumn(name = "user_id")
 	  private User user;
 	  
-// I may add a followers list for each book that lists all the users who have liked a certain book. 
+
 }
